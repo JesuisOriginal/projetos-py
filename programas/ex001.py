@@ -1,10 +1,7 @@
-import hashlib
 
-print('Hello my Mastah, sho me da wey')
-print('i shall hide thy words!!')
-print()
+
 cliente_pos = 0
-
+client_list = []
 # hasheando na mao, pode ser feito tambem pela hashlib builtin
 
 
@@ -58,6 +55,7 @@ def is_safe(hash_gerado, hashcode):
 hash_gerado_pela_entrada = 'daosbdojasjdaslkd'
 
 
+
 class Cliente:
     # general code shall ve the index of the cliente in the list of clients
 
@@ -88,25 +86,49 @@ def cria_cliente():
     novo_cliente.set_login()
     novo_cliente.set_senha()
     print('thou shall be not forgotten')
+    global client_list
+    client_list.append(hash(novo_cliente.login) + hash(novo_cliente.senha))
     global cliente_pos
     cliente_pos += 1
 
 
 def client_list_update(cliente_novo):
-    nonlocal cliente_list
-    cliente_list = []
+    global client_list
+    client_list = []
     for i in range(cliente_pos):
-        cliente_list.append(cliente_novo)
+        client_list.append(cliente_novo)
 
 
-def cliente_seguro():
+def cliente_seguro(hash_gerado_pela_entrada2):
     # ira verificar se os dados do cliente nao foram alterados e retornar True se sim
-    if is_safe(hash_gerado_pela_entrada, hashcode):
+    if is_safe(hash_gerado_pela_entrada2, hashcode):
         print('client data is secure')
         return True
     else:
         return False
 
 
+def hash_client(cliente):
+    print('thou are now the unseen')
+    hash_code = hash(cliente.login) + hash(cliente.senha)
+    return hash_code
 
+
+def login():
+    print('sho me ur guts')
+    unsafe_login = input('sho me ur guts')
+    unsafe_senha = input('tell me the secret code')
+    loged = cliente_seguro(hash(unsafe_login) + hash(unsafe_senha))
+    if loged == True:
+        # TODO code for login here
+
+
+def loged(cliente):
+
+
+
+def game_on():
+    print('Hello my Mastah, sho me da wey')
+    print('i shall hide thy words!!')
+    print()
 
