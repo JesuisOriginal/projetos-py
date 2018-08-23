@@ -118,13 +118,14 @@ def login():
     print('sho me ur guts')
     unsafe_login = input('sho me ur guts')
     unsafe_senha = input('tell me the secret code')
-    loged = cliente_seguro(hash(unsafe_login) + hash(unsafe_senha))
-    if loged == True:
-        # TODO code for login here
+    logged = cliente_seguro(hash(unsafe_login) + hash(unsafe_senha))
+    if logged:
+        print('is logged')
+    # TODO code for login here
 
 
-def loged(cliente):
-
+def logged(cliente):
+    print('thou are now inside a limbo of mind')
 
 
 def game_on():
