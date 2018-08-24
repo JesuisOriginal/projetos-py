@@ -54,13 +54,13 @@ hash_gerado_pela_entrada = 'daosbdojasjdaslkd'
 
 class Cliente:
     # general code shall ve the index of the cliente in the list of clients
-    code = {}
     nome = ''
     cpf = ''
     senha = ''
     login = ''
     pos = {}
     client_id = cliente_pos
+    code = {}
 
     def set_nome(self, novo_nome):
         self.nome = novo_nome
@@ -77,14 +77,22 @@ class Cliente:
     Client_data = {
         "Nome": nome,
         "code": code,
+        ""
         "pos": pos
     }
 
 
+client_test = Cliente
+client_test.Client_data["Nome"] = 'nome'
+client_test.login = 'login'
+client_test.senha = 'senha'
+client_test.cpf = '111.222.333-44'
+client_test.Client_data["code"] = str(hash(client_test.login) + hash(client_test.senha))
+# TODO lembrar SEMPRE O HASH deve ser castado pra string
 novo_cliente = Cliente
 
 
-def cria_cliente():
+def cria_cliente(): # TODO ajeitar o codigo aqui sobre criar
     global novo_cliente
     novo_cliente = Cliente
     novo_cliente.set_nome()
@@ -169,12 +177,6 @@ def game_on():
         print('invalid awnser PEASANTRY')
         exit(0)
 
-
-client_test = Cliente
-client_test.set_nome(client_test,"name")
-client_test.set_login(client_test, 'login')
-client_test.set_senha(client_test, 'senha')
-client_test.set_cpf(client_test, '111.222.333-44')
 
 save_on_file(client_test.Client_data)
 
